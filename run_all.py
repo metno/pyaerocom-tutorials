@@ -18,7 +18,12 @@ user_server_avail = const.has_access_users_database
 
 # Dictionary that specifies which notebooks (keys) are executed only if 
 # a certain condition (value, True / False) is met
+
+SOURCE_DIR = 'notebooks'
+OUT_DIR = "rst"
+
 RUN_PREFIX = ['tut', 'add']
+
 RUN_IF = {'add01_intro_time_handling.ipynb': lustre_avail,
           'add02_read_ebas_nasa_ames.ipynb': lustre_avail,
           'add03_ebas_database_browser.ipynb': lustre_avail,
@@ -84,28 +89,28 @@ def execute_and_save_notebook(file):
 if __name__=="__main__":
     
     parser = argparse.ArgumentParser()
-    parser.add_argument('--execute_all', '-exec', type=bool, default=True,
-                        help=("Boolean: execute all notebooks before conversion " 
-                              "to rst format"))
+    parser.add_argument('--noexec', action="store_true",
+                        default=False,
+                        help=("Don't execute notebooks"))
     
-    parser.add_argument('--convert_rst', '-conv', type=bool, default=False,
-                        help=("Boolean: convert all notebooks to rst and save" 
-                              "in docs folder"))
+    parser.add_argument('--noconv', default=False, action='store_true',
+                        help=("No conversion to rst"))
     
-    parser.add_argument('--output_dir', default="../docs/", type=str,
+    parser.add_argument('--outdir', default=OUT_DIR, type=str,
                         help="Output directory for converted notebooks")
     
-    parser.add_argument('--clear_old', '-cls', default=False, type=bool,
+    parser.add_argument('--clearold', action='store_true',
+                        default=False,
                         help=("Delete all existing converted notebooks "
                               "in output direcory (i.e. all files and folders "
                               "with trailing number)"))
     
     args = parser.parse_args()
     
-    out_dir = args.output_dir
+    outdir = args.outdir
     
-    if not os.path.exists(out_dir):
-        raise IOError("Specified output directory {} does not exist".format(out_dir))
+    if not os.path.exists(outdir):
+        raise IOError("Specified output directory {} does not exist".format(outdir))
     
     files = []
     skipped = []
@@ -113,7 +118,7 @@ if __name__=="__main__":
     for prefix in RUN_PREFIX:
         pattern = "{}[0-9]*.ipynb".format(prefix)
         patterns.append(pattern)
-        for f in sorted(fnmatch.filter(os.listdir("."), pattern)):
+        for f in sorted(fnmatch.filter(os.listdir(SOURCE_DIR), pattern)):
             if not f in RUN_IF:
                 files.append(f)
             else:
@@ -125,11 +130,11 @@ if __name__=="__main__":
     success, failed = [], []
     conv_success, conv_fail = [], []
     if files:
-        if args.clear_old:
+        if args.clearold:
             ### DELETE OLD NOTEBOOKS (if applicable)
             for pattern in patterns:
-                matches = fnmatch.filter(os.listdir(out_dir), pattern)
-            old = [os.path.join(out_dir, x) for x in matches]
+                matches = fnmatch.filter(os.listdir(outdir), pattern)
+            old = [os.path.join(outdir, x) for x in matches]
             for item in old:
                 try:
                     os.remove(item)
@@ -138,30 +143,34 @@ if __name__=="__main__":
                 print("Deleted: {}".format(item))
         
         ### RUN ALL NOTEBOOKS
-        if args.execute_all:
-            for f in files:    
-                if execute_and_save_notebook(f):
+        EXEC = not args.noexec
+        EXEC = False
+        if EXEC:
+            for f in files:
+                fp = os.path.join(SOURCE_DIR, f)
+                if execute_and_save_notebook(fp):
                     success.append(f)
                 else:
                     failed.append(f)
         
-        if args.convert_rst:                
+        if not args.noconv:                
             converter = nbconvert.RSTExporter()
             
             writer = nbconvert.writers.FilesWriter()
-            writer.build_directory = out_dir
+            writer.build_directory = outdir
             
-            for file in success:
-                name = os.path.basename(file)
+            for f in files:
+                fp = os.path.join(SOURCE_DIR, f)
                 try:
-                    resources = init_single_notebook_resources(file)
-                    (body, resources) = converter.from_file(file, resources=resources)
+                    resources = init_single_notebook_resources(fp)
+                    (body, resources) = converter.from_file(fp, 
+                                                            resources=resources)
             
-                    writer.write(body, resources, os.path.splitext(file)[0])
-                    conv_success.append(name)
+                    writer.write(body, resources, os.path.splitext(f)[0])
+                    conv_success.append(f)
                 except Exception as e:
-                    conv_fail.append(name)
-                    print("Failed to convert {} (Error: {})".format(name, repr(e)))
+                    conv_fail.append(f)
+                    print("Failed to convert {} (Error: {})".format(f, repr(e)))
          
     print('\n\n')
     print('\n--------------\nSKIPPED NOTEBOOK\n--------------\n')
@@ -178,7 +187,7 @@ if __name__=="__main__":
     for f in failed:
         print(f)
     print()
-    if args.convert_rst:
+    if not args.noconv:
         print('\n--------------\nCONVERSION RST SUCCESSFUL\n--------------\n')
         for f in conv_success:
             print(f)
