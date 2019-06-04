@@ -20,7 +20,7 @@ user_server_avail = const.has_access_users_database
 # a certain condition (value, True / False) is met
 
 SOURCE_DIR = 'notebooks'
-OUT_DIR = "rst"
+OUT_DIR = "../pyaerocom/docs/"
 
 RUN_PREFIX = ['tut', 'add']
 
@@ -144,7 +144,6 @@ if __name__=="__main__":
         
         ### RUN ALL NOTEBOOKS
         EXEC = not args.noexec
-        EXEC = False
         if EXEC:
             for f in files:
                 fp = os.path.join(SOURCE_DIR, f)
