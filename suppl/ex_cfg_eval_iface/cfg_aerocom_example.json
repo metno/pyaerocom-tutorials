@@ -1,0 +1,256 @@
+{
+   "proj_id": "aerocom",
+   "exp_id": "example",
+   "exp_name": "Pyaerocom example experiment",
+   "clear_existing_json": true,
+   "only_colocation": false,
+   "out_basedir": "/home/jonasg/github/aerocom_evaluation/data_new/json/",
+   "config_dir": null,
+   "colocation_settings": {
+      "save_coldata": true,
+      "start": 2010,
+      "ts_type": "daily",
+      "filter_name": "WORLD-noMOUNTAINS",
+      "remove_outliers": false,
+      "harmonise_units": true,
+      "basedir_coldata": "/home/jonasg/MyPyaerocom/colocated_data/",
+      "flex_ts_type_gridded": true,
+      "reanalyse_existing": false,
+      "raise_exceptions": false
+   },
+   "add_methods_file": "./cube_read_methods.py",
+   "obs_config": {
+      "AeronetSun": {
+         "obs_id": "AeronetSunV3Lev2.daily",
+         "obs_vars": [
+            "ang4487aer",
+            "od550aer"
+         ],
+         "obs_ts_type_read": null,
+         "obs_vert_type": "Column",
+         "read_opts_ungridded": null,
+         "obs_filters": {
+            "remove_outliers": true,
+            "latitude": [
+               20,
+               60
+            ],
+            "longitude": [
+               5,
+               30
+            ]
+         },
+         "var_outlier_ranges": {
+            "od550aer": [
+               0,
+               1
+            ]
+         }
+      },
+      "AeronetSDA": {
+         "obs_id": "AeronetSDAV3Lev2.daily",
+         "obs_vars": [
+            "od550lt1aer",
+            "od550gt1aer"
+         ],
+         "obs_ts_type_read": null,
+         "obs_vert_type": "Column",
+         "read_opts_ungridded": null
+      },
+      "EBAS-Lev3": {
+         "obs_id": "EBASMC",
+         "obs_vars": [
+            "absc550aer",
+            "scatc550dryaer"
+         ],
+         "obs_ts_type_read": null,
+         "obs_vert_type": "Surface",
+         "read_opts_ungridded": null,
+         "vert_scheme": "surface"
+      },
+      "MODIS6-terra": {
+         "obs_id": "MODIS6.terra",
+         "obs_vars": [
+            "od550aer"
+         ],
+         "obs_ts_type_read": null,
+         "obs_vert_type": "Column",
+         "read_opts_ungridded": null,
+         "regrid_res_deg": 5,
+         "ts_type": "daily",
+         "harmonise_units": false,
+         "var_outlier_ranges": {
+            "od550aer": [
+               0,
+               10
+            ]
+         }
+      },
+      "AATSR4.3-SU": {
+         "obs_id": "AATSR_SU_v4.3",
+         "obs_vars": [
+            "od550aer",
+            "ang4487aer",
+            "od550lt1aer",
+            "od550gt1aer",
+            "abs550aer"
+         ],
+         "obs_ts_type_read": null,
+         "obs_vert_type": "Column",
+         "read_opts_ungridded": null,
+         "regrid_res_deg": 5,
+         "ts_type": "daily"
+      }
+   },
+   "obs_ignore": [],
+   "model_config": {
+      "GFDL-AM4": {
+         "model_id": "GFDL-AM4-met2010_AP3-CTRL",
+         "model_ts_type_read": "daily",
+         "model_use_vars": {},
+         "model_read_aux": {
+            "od550gt1aer": {
+               "vars_required": [
+                  "od550dust",
+                  "od550ss"
+               ],
+               "fun": "add_cubes"
+            },
+            "ang4487aer": {
+               "vars_required": [
+                  "od550aer",
+                  "od870aer"
+               ],
+               "fun": "calc_ae"
+            }
+         },
+         "start": 2010
+      },
+      "OsloCTM3-2010": {
+         "model_id": "OsloCTM3v1.01",
+         "model_ts_type_read": "daily",
+         "model_use_vars": {
+            "absc550aer": "abs550aer"
+         },
+         "model_read_aux": {
+            "scatc550dryaer": {
+               "vars_required": [
+                  "ec550dryaer",
+                  "abs550dryaer"
+               ],
+               "fun": "subtract_cubes"
+            }
+         },
+         "start": 2010
+      },
+      "ECMWF-REAN-2010": {
+         "model_id": "ECMWF_CAMS_REAN",
+         "model_ts_type_read": "daily",
+         "model_use_vars": {
+            "abs550aer": "od550bc"
+         },
+         "model_read_aux": {
+            "od550gt1aer": {
+               "vars_required": [
+                  "od550dust",
+                  "od550ss"
+               ],
+               "fun": "add_cubes"
+            }
+         },
+         "start": 2010
+      }
+   },
+   "model_ignore": [],
+   "var_mapping": {
+      "od550aer": [
+         "AOD",
+         "2D",
+         "Optical properties"
+      ],
+      "od550lt1aer": [
+         "AOD<1um",
+         "2D",
+         "Optical properties"
+      ],
+      "od550gt1aer": [
+         "AOD>1um",
+         "2D",
+         "Optical properties"
+      ],
+      "abs550aer": [
+         "AAOD",
+         "2D",
+         "Optical properties"
+      ],
+      "ang4487aer": [
+         "AE",
+         "2D",
+         "Optical properties"
+      ],
+      "scatc550dryaer": [
+         "Scat. coef. (dry)",
+         "3D",
+         "Optical properties"
+      ],
+      "scatc550aer": [
+         "Scat. coef.",
+         "3D",
+         "Optical properties"
+      ],
+      "absc550aer": [
+         "Abs. coef.",
+         "3D",
+         "Optical properties"
+      ],
+      "ec532aer": [
+         "Ext. coeff.",
+         "3D",
+         "Optical properties"
+      ],
+      "bscatc532aer": [
+         "Backscat. coeff.",
+         "3D",
+         "Optical properties"
+      ],
+      "sconcpm10": [
+         "PM10",
+         "3D",
+         "Particle concentrations"
+      ],
+      "sconcpm25": [
+         "PM2.5",
+         "3D",
+         "Particle concentrations"
+      ],
+      "sconcso4": [
+         "SO4 (Aerosol)",
+         "3D",
+         "Particle concentrations"
+      ],
+      "sconcso4pr": [
+         "SO4 (precip.)",
+         "3D",
+         "Particle concentrations"
+      ],
+      "sconco3": [
+         "O3",
+         "3D",
+         "Gas concentrations"
+      ],
+      "sconcso2": [
+         "SO2",
+         "3D",
+         "Gas concentrations"
+      ]
+   },
+   "var_order_menu": [
+      "ang4487aer",
+      "od550aer",
+      "od550lt1aer",
+      "od550gt1aer",
+      "abs550aer",
+      "absc550aer",
+      "scatc550dryaer"
+   ]
+}
