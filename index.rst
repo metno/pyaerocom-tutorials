@@ -2,9 +2,10 @@ Tutorials
 ---------
 
 pyaerocom tutorials and examples. All content displayed here is based on the
-official pyaerocom tutorials which are not part of the `pyaerocom <>__` GitHub
+official pyaerocom tutorials which are not part of the 
+`pyaerocom <https://github.com/metno/pyaerocom>`__ GitHub
 repository but are available through the
-`pyaerocom-tutorials repo <https://github.com/metno/pyaerocom-tutorials>__`.
+`pyaerocom-tutorials repo <https://github.com/metno/pyaerocom-tutorials>`__.
 
 All tutorials are jupyter notebooks.
 

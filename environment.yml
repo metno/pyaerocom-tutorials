@@ -4,5 +4,4 @@
 channels:
   - conda-forge
 dependencies:
-  - pyaerocom
-
+  - pyaerocom >=0.10.0
