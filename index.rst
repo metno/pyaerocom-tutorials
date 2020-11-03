@@ -1,17 +1,14 @@
-***************************
-pyaerocom tutorials
-***************************
+Tutorials
+---------
 
+Test tutorials
+==============
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :hidden:
 
    test.ipynb
 
-Indices and tables
-==================
+Our first stupid test tutorial.
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+- `Simple test <test.html>`__ | *test.ipynb*
