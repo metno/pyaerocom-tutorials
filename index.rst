@@ -7,7 +7,7 @@ pyaerocom tutorials
    :maxdepth: 2
    :caption: Contents:
 
-   tutorials.rst
+   test.ipynb
 
 Indices and tables
 ==================
