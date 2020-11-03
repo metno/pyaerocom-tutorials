@@ -9,6 +9,6 @@ Test tutorials
 
    test.ipynb
 
-Our first stupid test tutorial.
+Our first, rather useless, test tutorial.
 
 - `Simple test <test.html>`__ | *test.ipynb*
