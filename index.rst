@@ -36,7 +36,7 @@ quickly with pyaerocom.
 
 
 - `Setup and data access <getting_started_setup.html>`__ | *getting_started_setup.ipynb*
-- `Setup and data access <getting_started_analysis.html>`__ | *getting_started_analysis.ipynb*
+- `Basic data analysis <getting_started_analysis.html>`__ | *getting_started_analysis.ipynb*
 
 Outdated tutorials
 ==================
