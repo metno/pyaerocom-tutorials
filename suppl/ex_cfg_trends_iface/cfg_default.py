@@ -11,7 +11,7 @@ Contact: jonasg@met.no, augustinm@met.no
 """
 
 from collections import OrderedDict as od
-from pyaerocom.web import VAR_MAPPING
+from pyaerocom.aeroval import VAR_MAPPING
 import os
 
 # default variable mapping dictionary, you may add variables if you like
@@ -126,7 +126,7 @@ CFG = dict(
         
 if __name__ == '__main__':
    #print(var_mapping)
-   from pyaerocom.web.trends_evaluation import TrendsEvaluation
+   from pyaerocom.aeroval.trends_evaluation import TrendsEvaluation
    
    t = TrendsEvaluation(**CFG)
    t.to_json('.')

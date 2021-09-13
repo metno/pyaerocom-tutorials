@@ -4,7 +4,7 @@
 Config file for AeroCom PhaseIII optical properties experiment
 """
 
-from pyaerocom.web import VAR_MAPPING
+from pyaerocom.aeroval import VAR_MAPPING
 
 CFG = dict(
 #: Project ID
@@ -14,7 +14,7 @@ proj_id = 'aerocom',
 exp_id = 'example',
 exp_name = 'Pyaerocom example experiment',
     
-# the parent directory of data_new needs to have the gitlab web repository 
+# the parent directory of data_new needs to have the gitlab aeroval repository
 # cloned if you wish to look at the data
 out_basedir = '/home/jonasg/github/aerocom_evaluation/data_new/json/',
 add_methods_file = './cube_read_methods.py',
@@ -153,7 +153,7 @@ clear_existing_json=True
                                 
 if __name__ == '__main__':
 
-    from pyaerocom.web import AerocomEvaluation
+    from pyaerocom.aeroval import AerocomEvaluation
     
     stp = AerocomEvaluation(**CFG)
     stp.to_json('.') # update json config
