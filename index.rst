@@ -16,13 +16,6 @@ All tutorials are jupyter notebooks.
   since they relied on access to internal data servers of the Norwegian
   Meteorological Institute.
 
-  These *old* tutorials can be found below in Section "Outdated tutorials".
-  They are still mostly valid and provide a comprehensive introduction into
-  pyaerocom and its main features.
-
-  All other tutorials, that are shown in the following rely on publicly
-  available example data, and can thus, be run interactively.
-
 Getting started
 ===============
 
