@@ -39,6 +39,19 @@ quickly with pyaerocom.
 - `Setup and data access <getting_started_setup.html>`__ | *getting_started_setup.ipynb*
 - `Basic data analysis <getting_started_analysis.html>`__ | *getting_started_analysis.ipynb*
 
+
+
+Evaluations
+============
+.. toctree::
+   :hidden:
+
+   evaluations/trends-evaluation.ipynb
+
+This section contains tutorials used to show how to do evaluations with PyAeroval. Many of these tutorials assume access to data only available internal to METNO.
+
+- `Trends evaluations <trends-evaluation.html>`__ | *trends-evaluation.ipynb*
+
 Outdated tutorials
 ==================
 
