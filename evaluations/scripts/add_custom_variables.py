@@ -1,9 +1,9 @@
-your_dir = "/home/danielh/Documents/pyaerocom/tmp"
+your_dir = <your folder>
 output_dir = f"{your_dir}/data"
 coldata_dir = f"{your_dir}/coldata"
-exp_pi = "Daniel Heinesen"  # <your name>
-proj_id = "workshop"
-exp_id = "emep"
+exp_pi =  <your name>
+proj_id = "tutorial"
+exp_id = "customvar"
 
 # %%
 CFG = dict(
@@ -97,7 +97,7 @@ def calc_elecmentalcarbon(concecCoarse, concecFine):
     return elementalcarbon
 
 
-folder_EMEP = "/lustre/storeB/project/fou/kl/emep/People/danielh/projects/pyaerocom/workshop/emep/mod/2018"
+folder_EMEP = "/lustre/storeB/project/fou/kl/emep/ModelRuns/2021_REPORTING/TRENDS/2018"
 
 EMEP = dict(
     model_id="EMEP",
@@ -107,7 +107,6 @@ EMEP = dict(
     },  # Tells pyaerocom to use the EMEP reader instead of the default aerocom reader
     model_kwargs={
         "emep_vars": {"organiccarbon": "SURF_ugC_PM_OM25"},
-        "ts_type": "daily",
     },
     model_read_aux={
         "elementalcarbon": {
@@ -142,7 +141,7 @@ EBAS = dict(
 from pyaerocom.io.pyaro.pyaro_config import PyaroConfig
 
 data_id = "nilupmfebas"
-url = "/home/danielh/Downloads/EIMPs_winter2017-2018_data/EIMPs_winter_2017_2018_ECOC_Levo/"
+url = "/lustre/storeB/project/aerocom/aerocom1/AEROCOM_OBSDATA/EIMP/EIMPs_winter2017-2018_data/EIMPs_winter_2017_2018_ECOC_Levo/"
 config = PyaroConfig(
     name="pmf",
     data_id=data_id,
