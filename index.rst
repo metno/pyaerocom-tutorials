@@ -33,3 +33,15 @@ quickly with pyaerocom.
 - `Setup and data access <getting_started_setup.html>`__ | *getting_started_setup.ipynb*
 - `Basic data analysis <getting_started_analysis.html>`__ | *getting_started_analysis.ipynb*
 - `Using pyaerocom to create colocated data objects where colocation was done outside of pyaerocom <making_a_colocated_data_object_with_pyaerocom.html>`__ | *making_a_colocated_data_object_with_pyaerocom.ipynb*
+
+
+Evaluations
+============
+.. toctree::
+   :hidden:
+
+   evaluations/add_custom_variables.ipynb
+
+This section contains tutorials used to show how to do evaluations with PyAeroval. Many of these tutorials assume access to data only available internal to METNO.
+
+- `Adding Custom Variables <add_custom_variables.html>`__ | *add_custom_variables.ipynb*
