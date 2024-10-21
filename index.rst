@@ -42,6 +42,6 @@ Evaluations
 
    evaluations/add_custom_variables.ipynb
 
-This section contains tutorials used to show how to do evaluations with PyAeroval. Many of these tutorials assume access to data only available internal to METNO.
+This section contains tutorials used to show how to do evaluations with PyAeroval. Many of these tutorials assume access to data only available internal to MET Norway.
 
-- `Adding Custom Variables <add_custom_variables.html>`__ | *add_custom_variables.ipynb*
+- `Adding Custom Variables <evaluations/add_custom_variables.html>`__ | *add_custom_variables.ipynb*
