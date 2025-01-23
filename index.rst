@@ -35,6 +35,7 @@ quickly with pyaerocom.
 - `Basic data analysis <getting_started_analysis.html>`__ | *getting_started_analysis.ipynb*
 - `Using pyaerocom to create colocated data objects where colocation was done outside of pyaerocom <making_a_colocated_data_object_with_pyaerocom.html>`__ | *making_a_colocated_data_object_with_pyaerocom.ipynb*
 - `Reading EMEP data into PyAerocom<intro_emep.html>`__ | *intro_emep.ipynb*
+- `Using overlay (pixel) maps<overlay_maps.html>`__ | *overlay_maps.ipynb*
 
 
 Evaluations
