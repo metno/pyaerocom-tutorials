@@ -27,6 +27,7 @@ Getting started
    making_a_colocated_data_object_with_pyaerocom.ipynb
    intro_emep.ipynb
    overlay_maps.ipynb
+   non_observables.ipynb
 
 This section contains tutorials that are meant to help you getting started
 quickly with pyaerocom.
@@ -37,6 +38,7 @@ quickly with pyaerocom.
 - `Using pyaerocom to create colocated data objects where colocation was done outside of pyaerocom <making_a_colocated_data_object_with_pyaerocom.html>`__ | *making_a_colocated_data_object_with_pyaerocom.ipynb*
 - `Reading EMEP data into PyAerocom <intro_emep.html>`__ | *intro_emep.ipynb*
 - `Using overlay (pixel) maps <overlay_maps.html>`__ | *overlay_maps.ipynb*
+- `Using non observables in aeroval experiments <non_observables.html>`__ | *non_observables.ipynb*
 
 
 Evaluations
