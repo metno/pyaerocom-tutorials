@@ -37,7 +37,7 @@ CFG = dict(
     # Statistical Options
     obs_remove_outliers=False,
     model_remove_outliers=False,
-    colocate_time=True,
+    colocate_time=False,
     zeros_to_nan=False,
     weighted_stats=True,
     annual_stats_constrained=True,
@@ -51,11 +51,11 @@ CFG = dict(
     exp_descr=("Evaluation of EMEP data with bulk variables"),
     public=True,
 
-    var_order_menu=["fraction"] # Adds variable to menu list, so it is visible at webpage 
+    var_order_menu=["fraction"], # Adds variable to menu list, so it is visible at webpage 
 
 )
 
-folder_EMEP = "../../data/testdata-minimal/modeldata/EMEP_2017"
+folder_EMEP = "../../data/testdata-minimal/modeldata/EMEP_PM"
 
 EMEP = dict(
         model_id="EMEP",
@@ -78,7 +78,7 @@ variables = {
 }
 
 const.register_custom_variables(variables)
-
+from pyaerocom.io import PyaroConfig
 
 
 data_id = "nilupmfebas"
@@ -91,19 +91,20 @@ config = PyaroConfig(
     filters={
         "variables": {
             "include": [
-                "pm10_mass",
-                "pm25_mass",
+                "pm10#pm10_mass#ug m-3",
+                "pm25#pm25_mass#ug m-3",
             ]
         }
     },
     name_map={
-        "pm10_mass": "concpm10",
-        "pm25_mass": "concpm25",
+        "pm25#pm25_mass#ug m-3": "concpm25",
+        "pm10#pm10_mass#ug m-3": "concpm10",
     },
 )
 
 EBAS= dict(
-            obs_id="EBASMC",
+            obs_id=config.name,
+            pyaro_config=config,
             web_interface_name="EBAS-m",
             obs_vars=[
                 "fraction"
