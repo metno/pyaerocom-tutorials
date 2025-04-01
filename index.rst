@@ -39,6 +39,7 @@ quickly with pyaerocom.
 - `Reading EMEP data into PyAerocom <intro_emep.html>`__ | *intro_emep.ipynb*
 - `Using overlay (pixel) maps <overlay_maps.html>`__ | *overlay_maps.ipynb*
 - `Using non observables in aeroval experiments <non_observables.html>`__ | *non_observables.ipynb*
+- `Using the parquet reader <use_parquet_reader.html>`__ | *use_parquet_reader.ipynb*
 
 
 Evaluations
