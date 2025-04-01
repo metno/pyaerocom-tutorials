@@ -9,13 +9,6 @@ repository but are available through the
 
 All tutorials are jupyter notebooks.
 
-.. note::
-
-  The tutorials are currently undergoing revision, as the initial set of
-  tutorial notebooks cannot be interactively executed from the outside world,
-  since they relied on access to internal data servers of the Norwegian
-  Meteorological Institute.
-
 Getting started
 ===============
 
@@ -28,7 +21,8 @@ Getting started
    intro_emep.ipynb
    overlay_maps.ipynb
    non_observables.ipynb
-
+   use_parquet_reader.ipynb
+   
 This section contains tutorials that are meant to help you getting started
 quickly with pyaerocom.
 
